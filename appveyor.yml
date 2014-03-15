@@ -1,6 +1,8 @@
 install:
   - cinst python
   - set PYTHON=C:\Python27\python
+  - set VS120COMNTOOLS=
+  - set VS110COMNTOOLS=
 
 build_script:
-  - vcbuild.bat
+  - vcbuild.bat test
