@@ -2,4 +2,6 @@ install:
   - cinst python
 
 build_script:
+  - set
+  - dir C:\Python27
   - vcbuild.bat
