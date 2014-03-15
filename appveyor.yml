@@ -1,0 +1,5 @@
+install:
+  - cinst python
+
+build_script:
+  - vcbuild.bat
