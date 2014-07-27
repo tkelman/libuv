@@ -46,6 +46,7 @@ AM_CONDITIONAL([LINUX],  [AS_CASE([$host_os],[linux*],        [true], [false])])
 AM_CONDITIONAL([NETBSD], [AS_CASE([$host_os],[netbsd*],       [true], [false])])
 AM_CONDITIONAL([OPENBSD],[AS_CASE([$host_os],[openbsd*],      [true], [false])])
 AM_CONDITIONAL([SUNOS],  [AS_CASE([$host_os],[solaris*],      [true], [false])])
+AM_CONDITIONAL([CYGWIN], [AS_CASE([$host_os],[cygwin*],       [true], [false])])
 AM_CONDITIONAL([WINNT],  [AS_CASE([$host_os],[mingw*],        [true], [false])])
 PANDORA_ENABLE_DTRACE
 AC_CHECK_PROG(PKG_CONFIG, pkg-config, yes)

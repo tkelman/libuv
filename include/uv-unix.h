@@ -44,7 +44,7 @@
 
 #include "uv-threadpool.h"
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__CYGWIN__)
 # include "uv-linux.h"
 #elif defined(_AIX)
 # include "uv-aix.h"
@@ -135,7 +135,7 @@ typedef UV_PLATFORM_SEM_T uv_sem_t;
 typedef pthread_cond_t uv_cond_t;
 typedef pthread_key_t uv_key_t;
 
-#if defined(__APPLE__) && defined(__MACH__)
+#if (defined(__APPLE__) && defined(__MACH__)) || defined(__CYGWIN__)
 
 typedef struct {
   unsigned int n;
@@ -145,7 +145,7 @@ typedef struct {
   uv_sem_t turnstile2;
 } uv_barrier_t;
 
-#else /* defined(__APPLE__) && defined(__MACH__) */
+#else /* (defined(__APPLE__) && defined(__MACH__)) || defined(__CYGWIN__) */
 
 typedef pthread_barrier_t uv_barrier_t;
 

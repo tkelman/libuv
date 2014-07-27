@@ -361,7 +361,7 @@ int uv_cond_timedwait(uv_cond_t* cond, uv_mutex_t* mutex, uint64_t timeout) {
 }
 
 
-#if defined(__APPLE__) && defined(__MACH__)
+#if (defined(__APPLE__) && defined(__MACH__)) || defined(__CYGWIN__)
 
 int uv_barrier_init(uv_barrier_t* barrier, unsigned int count) {
   int err;
@@ -425,7 +425,7 @@ int uv_barrier_wait(uv_barrier_t* barrier) {
   return serial_thread;
 }
 
-#else /* !(defined(__APPLE__) && defined(__MACH__)) */
+#else /* !((defined(__APPLE__) && defined(__MACH__)) || defined(__CYGWIN__)) */
 
 int uv_barrier_init(uv_barrier_t* barrier, unsigned int count) {
   return -pthread_barrier_init(barrier, NULL, count);
@@ -445,7 +445,7 @@ int uv_barrier_wait(uv_barrier_t* barrier) {
   return r == PTHREAD_BARRIER_SERIAL_THREAD;
 }
 
-#endif /* defined(__APPLE__) && defined(__MACH__) */
+#endif /* (defined(__APPLE__) && defined(__MACH__)) || defined(__CYGWIN__) */
 
 int uv_key_create(uv_key_t* key) {
   return -pthread_key_create(key, NULL);

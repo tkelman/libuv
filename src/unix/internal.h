@@ -33,9 +33,9 @@
 # define inline __inline
 #endif
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__CYGWIN__)
 # include "linux-syscalls.h"
-#endif /* __linux__ */
+#endif /* __linux__ || __CYGWIN__ */
 
 #if defined(__sun)
 # include <sys/port.h>

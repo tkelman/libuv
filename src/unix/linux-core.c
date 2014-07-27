@@ -30,7 +30,9 @@
 
 #include <net/if.h>
 #include <sys/param.h>
-#include <sys/prctl.h>
+#ifndef __CYGWIN__
+# include <sys/prctl.h>
+#endif
 #include <sys/sysinfo.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -42,6 +44,10 @@
 # if __UCLIBC_MAJOR__ < 0 || __UCLIBC_MINOR__ < 9 || __UCLIBC_SUBLEVEL__ < 32
 #  undef HAVE_IFADDRS_H
 # endif
+#endif
+
+#ifdef __CYGWIN__
+# undef HAVE_IFADDRS_H
 #endif
 
 #ifdef HAVE_IFADDRS_H

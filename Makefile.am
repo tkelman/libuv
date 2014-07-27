@@ -274,6 +274,15 @@ libuv_la_SOURCES += src/unix/linux-core.c \
                     src/unix/proctitle.c
 endif
 
+if CYGWIN
+include_HEADERS += include/uv-linux.h
+libuv_la_SOURCES += src/unix/linux-core.c \
+                    src/unix/linux-inotify.c \
+                    src/unix/cygwin-syscalls.c \
+                    src/unix/linux-syscalls.h \
+                    src/unix/proctitle.c
+endif
+
 if NETBSD
 include_HEADERS += include/uv-bsd.h
 libuv_la_SOURCES += src/unix/kqueue.c src/unix/netbsd.c
